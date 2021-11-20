@@ -1,8 +1,5 @@
 import { alpha, makeStyles } from "@material-ui/core/styles";
 
-/**************************
- * STYLE FROM MATERIAL UI *
- **************************/
 export default makeStyles((theme) => ({
   title: {
     display: "none",

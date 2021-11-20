@@ -34,10 +34,46 @@
 
 // export default Header;
 
-import React from "react";
+import { AppBar, Box, InputBase, Toolbar, Typography } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import { Autocomplete } from "@react-google-maps/api";
 
+// useStyles seems to be a hook
+import useStyles from "./styles";
 const Header = () => {
-  return <h1>Header</h1>;
+  const classes = useStyles();
+  return (
+    <AppBar position="static">
+      <Toolbar className={classes.toolbar}>
+        <Typography variant="h5" className={classes.title}>
+          Travel Advisor
+        </Typography>
+
+        {/* /*************************************
+         * A BOX IS A DIV WITH SOME PROPERTIES *
+         *************************************/}
+        <Box display="flex">
+          <Typography variant="h6" className={classes.title}>
+            Explore new places
+          </Typography>
+          {/* <Autocomplete> */}
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            {/* /***********************************************************************
+             * IN THIS CASE WE HAVE 2 PROPERTIES IN CLASSES ( AND NOT CLASSNAME !) *
+             ***********************************************************************/}
+            <InputBase
+              placeholder="Search…"
+              classes={{ root: classes.inputRoot, input: classes.inputInput }}
+            />
+          </div>
+          {/* </Autocomplete> */}
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default Header;
