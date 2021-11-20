@@ -36,7 +36,7 @@
 
 import { AppBar, Box, InputBase, Toolbar, Typography } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { Autocomplete } from "@react-google-maps/api";
+// import { Autocomplete } from "@react-google-maps/api";
 
 // useStyles seems to be a hook
 import useStyles from "./styles";
