@@ -65,22 +65,24 @@ import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
 import useStyles from "./styles.js";
 import mapStyles from "@/mapStyles.js";
+import { usePosition } from "use-position";
 
-const Map = () => {
+const Map = ({ setCoords, setBounds, coords }) => {
   const isMobile = useMediaQuery("(min-width:600px)");
   const classes = useStyles();
 
-  const coords = {
-    lat: 48.433331,
-    lng: 7.66667,
-  };
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
         // personal api key
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
+        bootstrapURLKeys={{
+          key: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
+        }}
         // Default position
-        defaultCenter={coords}
+        defaultCenter={{
+          lat: 48.856614,
+          lng: 2.3522219,
+        }}
         // CurrentPosition
         center={coords}
         defaultZoom={14}
@@ -93,8 +95,8 @@ const Map = () => {
         }}
         // When We Change the Map
         onChange={(e) => {
-          // setCoords({ lat: e.center.lat, lng: e.center.lng });
-          // setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+          setCoords({ lat: e.center.lat, lng: e.center.lng });
+          setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
         // When I calick on a restaurant on the map
         onChildClick={(child) => {
