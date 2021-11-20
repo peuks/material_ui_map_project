@@ -64,14 +64,43 @@ import { Paper, Typography, useMediaQuery } from "@material-ui/core";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
 import useStyles from "./styles.js";
+import mapStyles from "@/mapStyles.js";
 
 const Map = () => {
   const isMobile = useMediaQuery("(min-width:600px)");
   const classes = useStyles();
 
+  const coords = {
+    lat: 48.433331,
+    lng: 7.66667,
+  };
   return (
     <div className={classes.mapContainer}>
-      <h1></h1>
+      <GoogleMapReact
+        // personal api key
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
+        // Default position
+        defaultCenter={coords}
+        // CurrentPosition
+        center={coords}
+        defaultZoom={14}
+        // Top Right Left Bottom
+        margin={[50, 50, 50, 50]}
+        options={{
+          disableDefaultUI: true,
+          zoomControl: true,
+          styles: mapStyles,
+        }}
+        // When We Change the Map
+        onChange={(e) => {
+          // setCoords({ lat: e.center.lat, lng: e.center.lng });
+          // setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+        }}
+        // When I calick on a restaurant on the map
+        onChildClick={(child) => {
+          // import mapStyles from "."
+        }}
+      ></GoogleMapReact>
     </div>
   );
 };
