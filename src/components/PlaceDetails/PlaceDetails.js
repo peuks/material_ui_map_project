@@ -71,8 +71,8 @@
 
 import React from "react";
 
-const PlaceDetails = () => {
-  return <div></div>;
+const PlaceDetails = ({ place, selected, refProp }) => {
+  return <h1>{place.name}</h1>;
 };
 
 export default PlaceDetails;
